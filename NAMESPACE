@@ -1,0 +1,1 @@
+export("daum_news_for_LDA")
