@@ -22,6 +22,7 @@ daum_news_for_LDA <- function(category, maxPage){
     news <- html_text(my_nodes1) 
     news_text <- c(news_text, news)
     
-    return(news_text)
+    
   }
+  return(news_text)
 }
