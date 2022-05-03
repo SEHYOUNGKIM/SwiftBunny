@@ -1,1 +1,5 @@
-export("daum_news_for_LDA")
+export(daum_news_for_LDA)
+
+
+import(httr)
+import(rvest)
