@@ -3,4 +3,4 @@ export(fifaOnline_Stats_v1)
 
 import(httr)
 import(rvest)
-import(selenium)
+import(RSelenium)
