@@ -1,4 +1,5 @@
 fifaOnline_Stats_v1 <- function(myPlayer) {
+  print("thank you seHyoung")
   remDR <- remoteDriver(remoteServerAddr="localhost", port=4445L, browserName="chrome")
   urls <- "https://fifaonline4.inven.co.kr/dataninfo/player/"
   
