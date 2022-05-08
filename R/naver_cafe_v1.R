@@ -29,7 +29,7 @@ naver_cafe_v1 <- function(mykeywords, maxPage){
   }
   
   
-  cafe_df <- data.frame(mykeywords, cafe_link)
+  cafe_df <- data.frame(search_word, cafe_link)
   cafe_df$title <- ""
   cafe_df$date <- ""
   cafe_df$member <- ""
