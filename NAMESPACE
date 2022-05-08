@@ -1,5 +1,6 @@
 export(daum_news_for_LDA)
 export(fifaOnline_Stats_v1)
+export(naver_cafe_v1)
 
 import(httr)
 import(rvest)
