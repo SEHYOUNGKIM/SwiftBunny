@@ -1,6 +1,11 @@
 export(daum_news_for_LDA)
 export(fifaOnline_Stats_v1)
 export(naver_cafe_v1)
+export(login_everytime)
+export(everytime_myCatergory)
+export(get_everytime_data)
+export(lectures)
+
 
 import(httr)
 import(rvest)
