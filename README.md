@@ -28,3 +28,4 @@
 4-2. login_everytime을 먼저 하셔야 합니다. 그 후에 게시판 크롤링을 위해서는 everytime_myCategory를 통해 카테고리를 선택해 주세요. 그 후에 get_everytime_data를 통해 게시판 데이터들을 가져와주세요.  
 4-3. 강의평의 경우 lectures를 이용해서 가져와주세요.  
 4-4. 21학번 파란학기 화이팅!!  
+4-5. 업데이트 공지! get_everytime_data_v2가 더 효율적이네요!  
