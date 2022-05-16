@@ -20,7 +20,7 @@ login_everytime <- function(id, pw){
 }
 
 
-myCatergory <- function(category){
+everytime_myCatergory <- function(category){
   if(category == '자유게시판'){
     remDR$navigate('https://everytime.kr/377391')  
   }else if (category == '비밀게시판'){
@@ -45,7 +45,7 @@ myCatergory <- function(category){
 }
 
 
-get_data <- function(max_range){
+get_everytime_data <- function(max_range){
   
   title <- c()
   content <- c()
