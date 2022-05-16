@@ -22,23 +22,32 @@ login_everytime <- function(id, pw){
 
 everytime_myCatergory <- function(category){
   if(category == '자유게시판'){
-    remDR$navigate('https://everytime.kr/377391')  
+    remDR$navigate('https://everytime.kr/377391')
+    every_url <<- 'https://everytime.kr/377391'
   }else if (category == '비밀게시판'){
     remDR$navigate('https://everytime.kr/258788')
+    every_url <<- 'https://everytime.kr/258788'
   }else if (category == '졸업생게시판'){
-    remDR$navigate('https://everytime.kr/385983')  
+    remDR$navigate('https://everytime.kr/385983')
+    every_url <<- 'https://everytime.kr/385983'
   }else if (category == '새내기게시판'){
-    remDR$navigate('https://everytime.kr/385892')  
+    remDR$navigate('https://everytime.kr/385892')
+    every_url <<- 'https://everytime.kr/385892'
   }else if (category == '시사이슈'){
-    remDR$navigate('https://everytime.kr/482604')  
+    remDR$navigate('https://everytime.kr/482604')
+    every_url <<- 'https://everytime.kr/482604'
   }else if (category == '정보게시판'){
-    remDR$navigate('https://everytime.kr/258790')  
+    remDR$navigate('https://everytime.kr/258790')
+    every_url <<- 'https://everytime.kr/258790'
   }else if (category == '홍보게시판'){
-    remDR$navigate('https://everytime.kr/367461')  
+    remDR$navigate('https://everytime.kr/367461')
+    every_url <<- 'https://everytime.kr/367461'
   }else if (category == '동아리학회'){
-    remDR$navigate('https://everytime.kr/418796')  
+    remDR$navigate('https://everytime.kr/418796')
+    every_url <<- 'https://everytime.kr/418796'
   }else if (category == '취업진로'){
     remDR$navigate('https://everytime.kr/377470')
+    every_url <<- 'https://everytime.kr/377470'
   }else{
     print('정확히 입력해주세요.')
   }
@@ -139,3 +148,50 @@ lectures <- function(keyword){
 }
 
 
+
+
+get_everytime_data_v2 <- function(max_range){
+  
+  title <- c()
+  content <- c()
+  date <- c()
+  
+  
+  for (page in 1:max_range){
+    
+    source <- remDR$getPageSource()[[1]]
+    html_source <- read_html(source)  
+    
+    my_nodes <- html_nodes(html_source, 'article > a.article')
+    links <- html_attr(my_nodes, 'href')    
+    
+    
+    for (link in links) {
+      remDR$navigate(paste0('https://everytime.kr',link))
+      Sys.sleep(1)
+      source <- remDR$getPageSource()[[1]]
+      html_source <- read_html(source)
+      
+      try({
+        content_node <- html_nodes(html_source, '#container > div.wrap.articles > article > a > p')
+        content <- c(content, html_text(content_node))
+        
+        title_node <- html_nodes(html_source, '#container > div.wrap.articles > article > a > h2')
+        title <- c(title, html_text(title_node))
+        
+        date_node <- html_nodes(html_source, '#container > div.wrap.articles > article > a > div.profile > time')
+        date <- c(date, html_text(date_node))
+        
+      }, silent = T)
+      
+      
+      
+      remDR$navigate(paste0(every_url, '/p/', page+1))
+      Sys.sleep(1)
+      
+    }
+    
+  }
+  
+  return(data.frame(title, date, content))
+}
