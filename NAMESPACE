@@ -6,7 +6,3 @@ export(everytime_myCatergory)
 export(get_everytime_data)
 export(lectures)
 export(get_everytime_data_v2)
-
-import(httr)
-import(rvest)
-import(RSelenium)
